@@ -12,7 +12,7 @@ export default function SynonymSelect({ word, synonyms }: SynonymSelectProps) {
       <div className="h-[2px] w-[100%] bg-[#CCCCCC]"></div>
       <div className="flex gap-2 flex-wrap">
       {synonyms.map((synonym, index) => (
-        <Synonym word={synonym}/>
+        <Synonym word={synonym} key={index}/>
       ))}
       </div>
     </main>
