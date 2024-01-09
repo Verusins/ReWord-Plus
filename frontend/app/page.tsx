@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 
 export default function Home() {
   const [is3Char, setIs3Char] = useState(false);
+  const [isQuotes, setIsQuotes] = useState(false);
   const [text, setText] = useState("");
   useEffect(() => {
     console.log("is3Char:", is3Char);
@@ -18,12 +19,15 @@ export default function Home() {
   const handle3CharChange = () => {
     setIs3Char(!is3Char);
   };
+  const handleQuoteChange = () => {
+    setIsQuotes(!isQuotes);
+  };
   let list: string[] = ["conrad", "sigmund"];
   return (
     <main className="flex flex-col h-screen">
       <NavBar />
-      <div className="flex justify-between flex-grow">
-        <div className="flex flex-col flex-grow px-8 w-1/2">
+      <div className="flex justify-between flex-grow my-6 mx-8">
+        <div className="flex flex-col flex-grow w-1/2">
           <form className="p-4 h-full">
             <textarea
               value={text}
@@ -40,11 +44,16 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center m-4 gap-4">
+        <div className="flex flex-col items-center m-4 gap-4">
           <ReWordCheck
             name={"Only modify words greater than 3 characters"}
             isChecked={is3Char}
             setIsChecked={handle3CharChange}
+          />
+          <ReWordCheck
+            name={"Overlook Quotations"}
+            isChecked={isQuotes}
+            setIsChecked={handleQuoteChange}
           />
           <Synonym word={"repeats"} />
           <SynonymSelect word={"conrad"} synonyms={list} />

@@ -6,11 +6,20 @@ interface ReWordCheckProps {
   setIsChecked: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export default function ReWordCheck({name, isChecked, setIsChecked}: ReWordCheckProps){
+export default function ReWordCheck({
+  name,
+  isChecked,
+  setIsChecked,
+}: ReWordCheckProps) {
   return (
-    <main className="flex justify-center items-center bg-[#787DFF] rounded-lg p-2 gap-4 text-white">
+    <main className="flex justify-between items-center bg-[#787DFF] rounded-lg py-2 px-4 gap-16 text-white w-full">
       {name}
-      <input className="mr-2 leading-tight" type="checkbox" checked={isChecked} onChange={setIsChecked}></input>
+      <input
+        className="mr-2 leading-tight"
+        type="checkbox"
+        checked={isChecked}
+        onChange={setIsChecked}
+      ></input>
     </main>
   );
 }
