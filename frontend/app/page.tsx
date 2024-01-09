@@ -34,7 +34,23 @@ export default function Home() {
   const handleQuoteChange = () => {
     setIsQuotes(!isQuotes);
   };
-  let list: string[] = ["conrad", "sigmund"];
+  let list: string[] = [
+    "conrad",
+    "sigmund",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+  ];
   return (
     <main className="flex flex-col h-screen">
       <NavBar />
@@ -58,7 +74,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="flex flex-col items-center m-4 gap-4">
+        <div className="flex flex-col items-center m-4 gap-4 w-1/2">
           <ReWordCheck
             name={"Only modify words greater than 3 characters"}
             isChecked={is3Char}
@@ -69,8 +85,11 @@ export default function Home() {
             isChecked={isQuotes}
             setIsChecked={handleQuoteChange}
           />
-          <Synonym word={"repeats"} />
-          <SynonymSelect word={"conrad"} synonyms={list} />
+          <div className="flex flex-col gap-4 rounded-lg bg-[#C2DFF9] p-4 items-center w-full">
+            <div>Here are duplications to be fixed:</div>
+            <SynonymSelect word={"conrad"} synonyms={list} />
+            <SynonymSelect word={"conrad"} synonyms={list} />
+          </div>
         </div>
       </div>
     </main>
