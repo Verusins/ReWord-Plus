@@ -28,6 +28,9 @@ export default function Home() {
   useEffect(() => {
     console.log("text:", text);
   }, [text]);
+  useEffect(() => {
+    console.log("isQuotes:", isQuotes);
+  }, [isQuotes]);
   const handle3CharChange = () => {
     setIs3Char(!is3Char);
   };
