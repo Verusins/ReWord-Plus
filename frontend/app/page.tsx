@@ -23,12 +23,12 @@ export default function Home() {
     <main className="flex flex-col h-screen">
       <NavBar />
       <div className="flex justify-between flex-grow">
-        <div className="flex flex-col flex-grow px-8">
+        <div className="flex flex-col flex-grow px-8 w-1/2">
           <form className="p-4 h-full">
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="border rounded-md p-2 h-full resize-none"
+              className="border rounded-md p-2 h-full w-full resize-none"
             />
           </form>
           <div className="flex gap-4 m-4">
