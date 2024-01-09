@@ -5,6 +5,18 @@ import Synonym from "@/components/synonym";
 import SynonymSelect from "@/components/synonymselect";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { League_Spartan } from "next/font/google";
+import { Lato } from "next/font/google";
+
+const leagueSpartan = League_Spartan({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const lato = Lato({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export default function Home() {
   const [is3Char, setIs3Char] = useState(false);
@@ -26,9 +38,11 @@ export default function Home() {
   return (
     <main className="flex flex-col h-screen">
       <NavBar />
-      <div className="flex justify-between flex-grow my-6 mx-8">
+      <div
+        className={`flex justify-between flex-grow my-6 mx-8 ${leagueSpartan.className}`}
+      >
         <div className="flex flex-col flex-grow w-1/2">
-          <form className="p-4 h-full">
+          <form className={`p-4 h-full ${lato.className}`}>
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
