@@ -63,6 +63,7 @@ export default function Home() {
         <div className="flex flex-col flex-grow w-1/2">
           <form className={`p-4 h-full ${lato.className}`}>
             <textarea
+              placeholder="Paste your content here"
               value={text}
               onChange={(e) => setText(e.target.value)}
               className="border rounded-md p-2 h-full w-full resize-none"
