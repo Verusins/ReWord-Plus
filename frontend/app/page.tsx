@@ -7,6 +7,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { League_Spartan } from "next/font/google";
 import { Lato } from "next/font/google";
+import axios from "axios";
 
 const leagueSpartan = League_Spartan({
   weight: "400",
@@ -22,6 +23,7 @@ export default function Home() {
   const [is3Char, setIs3Char] = useState(false);
   const [isQuotes, setIsQuotes] = useState(false);
   const [text, setText] = useState("");
+  const [pokemonData, setPokemonData] = useState(null);
   useEffect(() => {
     console.log("is3Char:", is3Char);
   }, [is3Char]);
@@ -31,12 +33,28 @@ export default function Home() {
   useEffect(() => {
     console.log("isQuotes:", isQuotes);
   }, [isQuotes]);
+  useEffect(() => {
+    console.log("PokeAPI Data:", pokemonData);
+  }, [pokemonData]);
   const handle3CharChange = () => {
     setIs3Char(!is3Char);
   };
   const handleQuoteChange = () => {
     setIsQuotes(!isQuotes);
   };
+  const fetchPokemonData = async () => {
+    try {
+      const response = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon/ditto"
+      );
+      setPokemonData(response.data);
+    } catch (error) {
+      console.error("Error fetching Pokemon data:", error.message);
+    }
+  };
+  useEffect(() => {
+    fetchPokemonData();
+  }, []);
   let list: string[] = [
     "conrad",
     "sigmund",
@@ -70,7 +88,10 @@ export default function Home() {
             />
           </form>
           <div className="flex gap-4 m-4">
-            <button className="sticky rounded-xl bg-[#C2DFF9] p-2 border border-black">
+            <button
+              onClick={fetchPokemonData}
+              className="sticky rounded-xl bg-[#C2DFF9] p-2 border border-black"
+            >
               Save & Evaluate
             </button>
             <button className="sticky rounded-xl bg-[#C2DFF9] p-2 border border-black">
